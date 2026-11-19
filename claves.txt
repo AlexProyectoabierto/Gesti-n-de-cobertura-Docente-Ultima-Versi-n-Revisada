@@ -1,2 +1,4 @@
 encargado: paquito clave123;
-docente: docente1 docente123;        
+docente: docente1 docente123; 
+2da version encargado: paquito password;
+2da version docente: docente1 password;
