@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Gestión de Cursos y Cobertura Docente</title>
+
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <script src="../js/encargado.js" defer></script>
+</head>
+
+<body class="dashboard-body">
+    <header class="dashboard-header">
+        <h1>Gestión de Cursos y Cobertura Docente</h1>
+
+        <nav class="dashboard-nav">
+            <a href="crear-usuario.html">
+                Crear usuario
+            </a>
+
+            <a href="criterios-prioridad.html">
+                Criterios de prioridad
+            </a>
+
+            <button id="boton-logout" type="button" class="btn-logout">
+                Cerrar sesión
+            </button>
+        </nav>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="card-section">
+            <h2 id="titulo-formulario">
+                Registrar Necesidad de Curso
+            </h2>
+
+            <form id="formulario-ticket">
+                <input
+                    type="hidden"
+                    id="id-ticket"
+                >
+
+                <div>
+                    <label for="descripcion">
+                        Detalle de la Materia / Horas
+                    </label>
+
+                    <textarea
+                        id="descripcion"
+                        maxlength="2000"
+                        required
+                    ></textarea>
+                </div>
+
+                <div>
+                    <label for="sala">Curso / Grupo</label>
+
+                    <select id="sala">
+                        <option value="">Sin sala</option>
+                        <option value="Salón 5">Salón 5</option>
+                        <option value="Salón 6">Salón 6</option>
+                        <option value="Salón 7">Salón 7</option>
+                        <option value="Adscripción">Adscripción</option>
+                        <option value="Dirección">Dirección</option>
+                        <option value="Campus">Campus</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="prioridad">
+                        Prioridad
+                    </label>
+
+                    <select id="prioridad" required>
+                        <option value="">
+                            Selecciona una prioridad
+                        </option>
+                    </select>
+                </div>
+
+                <div id="contenedor-estado" hidden>
+                    <label for="estado">Estado</label>
+
+                    <select id="estado">
+                        <option value="">
+                            Selecciona un estado
+                        </option>
+                    </select>
+                </div>
+
+                <p id="mensaje-error" role="alert" hidden></p>
+                <p id="mensaje-exito" role="status" hidden></p>
+
+                <button type="submit">
+                    Guardar Solicitud
+                </button>
+
+                <button
+                    id="boton-cancelar"
+                    type="button"
+                    hidden
+                >
+                    Cancelar modificación
+                </button>
+            </form>
+        </section>
+
+        <section class="card-section">
+            <h2>Todos los tickets</h2>
+
+            <!-- Barra de filtros y ordenamiento -->
+            <div class="filtros-container" style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
+                <div>
+                    <label for="filtro-estado" style="font-size: 0.8rem; font-weight: bold; color: #444;">Filtrar por Estado:</label>
+                    <select id="filtro-estado" style="padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85rem;">
+                        <option value="">Todos los estados</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="En proceso">En proceso</option>
+                        <option value="Resuelto">Resuelto</option>
+                        <option value="Abierto">Abierto</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="filtro-prioridad" style="font-size: 0.8rem; font-weight: bold; color: #444;">Filtrar por Prioridad:</label>
+                    <select id="filtro-prioridad" style="padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85rem;">
+                        <option value="">Todas las prioridades</option>
+                        <option value="Fatal">Fatal</option>
+                        <option value="Alta">Alta</option>
+                        <option value="Media">Media</option>
+                        <option value="Baja">Baja</option>
+                    </select>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Responsable</th>
+                        <th>Detalle Materia</th>
+                        <th>Curso / Grupo</th>
+                        <th>Prioridad</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+
+                <tbody id="lista-tickets"></tbody>
+            </table>
+
+            <p id="sin-tickets" hidden>
+                No existen tickets registrados.
+            </p>
+        </section>
+    </main>
+</body>
+</html>
